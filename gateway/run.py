@@ -5533,6 +5533,9 @@ class GatewayRunner:
 
             try:
                 runtime_kwargs = _resolve_runtime_agent_kwargs()
+                logger.info("DEBUG runtime_kwargs: provider=%s base_url=%s api_key_len=%d",
+                    runtime_kwargs.get('provider'), runtime_kwargs.get('base_url'),
+                    len(runtime_kwargs.get('api_key') or ''))
             except Exception as exc:
                 return {
                     "final_response": f"⚠️ Provider authentication failed: {exc}",
